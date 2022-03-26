@@ -8,6 +8,7 @@ import io.seata.core.context.RootContext;
 import io.seata.rm.tcc.api.BusinessActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author ：dongdong
@@ -26,6 +27,7 @@ public class StorageTCCServiceImpl implements StorageTCCService {
     private StorageFreezeMapper storageFreezeMapper;
 
     @Override
+    @Transactional
     public void deduct(String commodityCode, int count) {
 
         String xid = RootContext.getXID();
